@@ -4,8 +4,8 @@
 #define API_PORT      "8080"
 #define API_IP_PORT   API_IP ":" API_PORT
 
-#define WIFI_SSID     "Galaxy S20 FE 5G019F"
-#define WIFI_PASSWORD "vnns8412"
+#define WIFI_SSID     "Telecentro-e0a0"
+#define WIFI_PASSWORD "ZJMYQ2YZET5G"
 
 #define DEVICE_ID     "jc:Xn:ni:38"
 

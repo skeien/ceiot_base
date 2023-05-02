@@ -140,10 +140,10 @@ app.get('/admin/:command', function(req,res) {
        case "clear":
          if (req.query.db == "mongo") {
            msg = "clearing mongo";
-           /* UNIMPLEMENTED */
+           db.public.many("cls")
 	 } else if (req.query.db == "psql") {
            msg = "clearing psql";
-           /* UNIMPLEMENTED */
+           db.public.many("DBCC DROPCLEANBUFFERS")
 	 } else {
            msg = "unknown db " + req.query.db;
          }
@@ -151,10 +151,11 @@ app.get('/admin/:command', function(req,res) {
        case "save":
          if (req.query.db == "mongo") {
            msg = "saving mongo to " + req.query.file;
-           /* UNIMPLEMENTED */
+           db.public.save(req.query.file)
+           
 	 } else if (req.query.db == "psql") {
            msg = "saving psql " + req.query.file;
-           /* UNIMPLEMENTED */
+           db.public.save(req.query.file)
 	 } else {
            msg = "unknown db " + req.query.db;
          }
@@ -180,20 +181,31 @@ app.get('/admin/:command', function(req,res) {
 startDatabase().then(async() => {
     await insertMeasurement({id:'00', t:'18', h:'78'});
     await insertMeasurement({id:'00', t:'19', h:'77'});
-    await insertMeasurement({id:'00', t:'17', h:'77'});
+    await insertMeasurement({id:'00', t:'40', h:'77'});
     await insertMeasurement({id:'01', t:'17', h:'77'});
     console.log("mongo measurement database Up");
 
     db.public.none("CREATE TABLE devices (device_id VARCHAR, name VARCHAR, key VARCHAR)");
-    db.public.none("INSERT INTO devices VALUES ('00', 'Fake Device 00', '123456')");
-    db.public.none("INSERT INTO devices VALUES ('01', 'Fake Device 01', '234567')");
+    db.public.none("INSERT INTO devices VALUES ('00', 'Example Device 00', '123456')");
+    db.public.none("INSERT INTO devices VALUES ('01', 'Example Device 01', '234567')");
     db.public.none("CREATE TABLE users (user_id VARCHAR, name VARCHAR, key VARCHAR)");
     db.public.none("INSERT INTO users VALUES ('1','Ana','admin123')");
     db.public.none("INSERT INTO users VALUES ('2','Beto','user123')");
 
     console.log("sql device database up");
+    let date = new Date()
 
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+
+    
     app.listen(PORT, () => {
+        if(month < 10){
+            console.log(`${day}-0${month}-${year}`)
+        }else{
+            console.log(`${day}-${month}-${year}`)
+        }
         console.log(`Listening at ${PORT}`);
     });
 });
