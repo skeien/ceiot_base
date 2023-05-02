@@ -600,3 +600,4 @@ Este entorno no me funcionó y además rompió el de ESP-IDF.
   - [ ] BME280
 tocado por XXXX
 Hecho por S.K
+Hecho por Seba
