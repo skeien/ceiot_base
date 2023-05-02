@@ -193,18 +193,18 @@ startDatabase().then(async() => {
     db.public.none("INSERT INTO users VALUES ('2','Beto','user123')");
 
     console.log("sql device database up");
-    let date = new Date()
+    let date = new Date();
 
-    let day = date.getDate()
-    let month = date.getMonth() + 1
-    let year = date.getFullYear()
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
 
     
     app.listen(PORT, () => {
         if(month < 10){
-            console.log(`${day}-0${month}-${year}`)
+            console.log(`${day}-0${month}-${year}`);
         }else{
-            console.log(`${day}-${month}-${year}`)
+            console.log(`${day}-${month}-${year}`);
         }
         console.log(`Listening at ${PORT}`);
     });
