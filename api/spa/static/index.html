@@ -21,6 +21,23 @@
            <div class="container">
             <a id="dispositivos"></a>
             <h4>Dispositivos</h4>
+            <script>
+            let date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    
+    app.listen(PORT, () => {
+        if(month < 10){
+            console.log(`${day}-0${month}-${year}`);
+        }else{
+            console.log(`${day}-${month}-${year}`);
+        }
+        console.log(`Listening at ${PORT}`);
+    });
+            </script>
             <ul class="collection" id="devicesList"> </ul>
         </div>
         <div class="container">
