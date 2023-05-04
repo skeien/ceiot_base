@@ -29,8 +29,7 @@ class ViewMainPage {
                   }
              }
         }   
-	if (Eq_id){
-        	window.alert("Los valores iguales son: "+ Eq_id);
-        	}
+
+        window.alert("Los valores iguales son: "+ Eq_id);
     }
 }
